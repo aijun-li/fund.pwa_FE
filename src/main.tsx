@@ -2,6 +2,7 @@ import 'antd/dist/antd.css'
 import React from 'react'
 import ReactDOM from 'react-dom'
 import { QueryClientProvider } from 'react-query'
+import { ReactQueryDevtools } from 'react-query/devtools'
 import { BrowserRouter as Router } from 'react-router-dom'
 import App from './App'
 import { StoreContext } from './contexts'
@@ -14,6 +15,7 @@ ReactDOM.render(
     <QueryClientProvider client={client}>
       <Router>
         <React.StrictMode>
+          <ReactQueryDevtools initialIsOpen={false} />
           <App />
         </React.StrictMode>
       </Router>

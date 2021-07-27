@@ -1,5 +1,11 @@
 html,
-body {
+body,
+#root {
   height: 100%;
   margin: 0;
+}
+
+/* ant design override */
+.ant-layout {
+  height: 100%;
 }

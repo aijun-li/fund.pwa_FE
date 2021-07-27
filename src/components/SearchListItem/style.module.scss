@@ -1,0 +1,24 @@
+.fund-brief {
+  flex: 1;
+}
+
+.fund-row {
+  margin-bottom: 2px;
+}
+
+.right-arrow {
+  display: flex;
+  align-items: center;
+  margin-left: 10px;
+  color: gray;
+  transform: translateY(2px);
+}
+
+.fund-code {
+  margin-right: 8px;
+  font-size: 16px;
+}
+
+.fund-type {
+  margin-right: 8px;
+}
