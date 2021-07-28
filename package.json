@@ -3,7 +3,19 @@
   "scripts": {
     "dev": "vite",
     "build": "tsc && vite build",
-    "serve": "vite preview"
+    "serve": "vite preview",
+    "prepare": "husky install",
+    "eslint": "eslint . --ext .ts,.js,.tsx",
+    "stylelint": "stylelint \"**/*.@(css|scss)\""
+  },
+  "lint-staged": {
+    "*.{js,ts,tsx}": "eslint",
+    "*.{css,scss}": "stylelint"
+  },
+  "commitlint": {
+    "extends": [
+      "@commitlint/config-conventional"
+    ]
   },
   "dependencies": {
     "@ant-design/icons": "^4.6.2",
@@ -18,6 +30,8 @@
     "react-router-dom": "^5.2.0"
   },
   "devDependencies": {
+    "@commitlint/cli": "^13.1.0",
+    "@commitlint/config-conventional": "^13.1.0",
     "@types/lodash-es": "^4.17.4",
     "@types/node": "^15.12.4",
     "@types/react": "^17.0.0",
@@ -29,7 +43,12 @@
     "eslint": "^7.30.0",
     "eslint-plugin-react": "^7.24.0",
     "eslint-plugin-react-hooks": "^4.2.0",
+    "husky": "^7.0.1",
+    "lint-staged": "^11.1.1",
     "sass": "^1.34.1",
+    "stylelint": "^13.13.1",
+    "stylelint-config-sass-guidelines": "^8.0.0",
+    "stylelint-config-standard": "^22.0.0",
     "typescript": "^4.3.2",
     "vite": "^2.4.1",
     "vite-plugin-pwa": "^0.8.1"
