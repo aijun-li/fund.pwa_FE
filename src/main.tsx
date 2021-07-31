@@ -8,10 +8,10 @@ import App from './App'
 import { StoreContext } from './contexts'
 import './global.css'
 import client from './services/client'
-import store from './stores'
+import stores from './stores'
 
 ReactDOM.render(
-  <StoreContext.Provider value={store}>
+  <StoreContext.Provider value={stores}>
     <QueryClientProvider client={client}>
       <Router>
         <React.StrictMode>

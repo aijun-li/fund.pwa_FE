@@ -1,3 +1,8 @@
-import StoreContext from './store'
+import { FundStore } from '@/stores/fund'
+import { createContext } from 'react'
 
-export { StoreContext }
+interface Stores {
+  FundStore: FundStore
+}
+
+export const StoreContext = createContext<Stores>(null!)

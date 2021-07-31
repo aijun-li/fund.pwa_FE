@@ -9,3 +9,9 @@ body,
 .ant-layout {
   height: 100%;
 }
+
+/* global variables */
+:root {
+  /* colors */
+  --star-yellow: #ffbb00;
+}
