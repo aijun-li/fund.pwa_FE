@@ -13,5 +13,8 @@ body,
 /* global variables */
 :root {
   /* colors */
-  --star-yellow: #ffbb00;
+  --yellow-star: #ffbb00;
+  --gray-tiny: #f0f0f0;
+  --green-down: green;
+  --red-up: red;
 }

@@ -1,0 +1,21 @@
+.fund-list-table {
+  height: 100%;
+
+  :global {
+    .ant-table-container {
+      border-bottom: 1px solid var(--gray-tiny);
+      height: calc(100vh - 76px);
+    }
+
+    .ant-table-body {
+      overflow-y: auto !important;
+    }
+  }
+}
+
+.fund-list-empty {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  justify-content: center;
+}

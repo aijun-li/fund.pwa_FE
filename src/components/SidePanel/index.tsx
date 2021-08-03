@@ -2,6 +2,7 @@ import SearchInput from '@/components/SearchInput'
 import SearchListItem from '@/components/SearchListItem'
 import { useFundSuggestions } from '@/services'
 import React, { useState } from 'react'
+import FundList from '../FundList'
 import styles from './style.module.scss'
 
 export default function SidePanel() {
@@ -31,7 +32,7 @@ export default function SidePanel() {
             ))}
           </div>
         ) : null}
-        <div className={styles.fundList}>
+        <div className={styles.fundListWrap}>
           {expanded ? (
             <div
               className={styles.shade}
@@ -41,6 +42,7 @@ export default function SidePanel() {
               }}
             />
           ) : null}
+          <FundList />
         </div>
       </div>
     </div>

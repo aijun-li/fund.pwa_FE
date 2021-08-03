@@ -5,6 +5,12 @@
     "selector-max-compound-selectors": 5,
     "color-named": null,
     "selector-max-id": 1,
-    "color-hex-length": "long"
+    "color-hex-length": "long",
+    "selector-pseudo-class-no-unknown": [
+      true,
+      {
+        "ignorePseudoClasses": ["global"]
+      }
+    ]
   }
 }

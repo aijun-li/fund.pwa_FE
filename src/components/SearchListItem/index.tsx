@@ -7,7 +7,7 @@ import React, { useEffect, useState } from 'react'
 import styles from './style.module.scss'
 
 type Props = {
-  data: Fund.Suggestion
+  data: Fund.SuggestionItem
   className?: string
 }
 
@@ -48,7 +48,7 @@ function SearchListItem({ data, className }: Props) {
           <span className={styles.iconButton}>
             {watched ? (
               <StarFilled
-                style={{ color: 'var(--star-yellow)' }}
+                style={{ color: 'var(--yellow-star)' }}
                 onClick={handleClick}
               />
             ) : (
