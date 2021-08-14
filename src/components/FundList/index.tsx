@@ -1,5 +1,6 @@
 import { useFundEst, useFundNet, useStore } from '@/hooks'
 import { WatchItem } from '@/stores/fund'
+import { getMMDD } from '@/utils'
 import { LoadingOutlined, SyncOutlined } from '@ant-design/icons'
 import { Empty, Table } from 'antd'
 import Column from 'antd/lib/table/Column'
@@ -45,17 +46,20 @@ function FundList() {
           title={
             <>
               <div>净值</div>
-              <div className={styles.columnTime}>{netDate}</div>
+              <div className={styles.fundDate}>{netDate}</div>
             </>
           }
           sorter={(a: WatchItem, b: WatchItem) =>
             Number(a.netRate) - Number(b.netRate)
           }
           showSorterTooltip={false}
-          render={(_, { net, netRate }: WatchItem) => (
+          render={(_, { net, netRate, netTime }: WatchItem) => (
             <div>
               <div>{net}</div>
               <div className={getRateClass(netRate)}>{netRate}%</div>
+              {getMMDD(netTime) !== netDate && (
+                <div className={styles.fundDate}>{getMMDD(netTime)}</div>
+              )}
             </div>
           )}
         />
@@ -64,7 +68,7 @@ function FundList() {
           title={
             <>
               <div>估值</div>
-              <div className={styles.columnTime}>{estDate}</div>
+              <div className={styles.fundDate}>{estDate}</div>
             </>
           }
           sorter={(a: WatchItem, b: WatchItem) =>
