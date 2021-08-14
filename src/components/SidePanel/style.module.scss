@@ -6,7 +6,7 @@
   .side-header {
     align-items: center;
     background-color: white;
-    border-bottom: 1px solid #e0e0e0;
+    border-bottom: 1px solid var(--gray-tiny);
     display: flex;
     justify-content: space-between;
     padding: 10px;
@@ -32,7 +32,7 @@
       }
     }
 
-    .fund-list {
+    .fund-list-wrap {
       height: 100%;
       position: relative;
 

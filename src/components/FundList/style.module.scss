@@ -1,0 +1,59 @@
+.list-wrapper {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+.fund-list-table {
+  height: calc(100vh - 80px);
+
+  :global {
+    .ant-table-container {
+      border-bottom: 1px solid var(--gray-tiny);
+      height: calc(100vh - 80px);
+    }
+
+    .ant-table-body {
+      overflow-y: auto !important;
+    }
+  }
+}
+
+.fund-list-empty {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  justify-content: center;
+}
+
+.column-time {
+  color: var(--gray-time);
+  font-size: 12px;
+}
+
+.rate-up {
+  color: var(--red-up);
+}
+
+.rate-down {
+  color: var(--green-down);
+}
+
+.bottom-info {
+  align-items: center;
+  color: var(--gray-bottom);
+  display: flex;
+  flex: 1;
+  font-size: 12px;
+  justify-content: space-between;
+  padding: 0 8px;
+
+  .fetch-icon {
+    margin-right: 8px;
+
+    &:hover {
+      color: black;
+      cursor: pointer;
+    }
+  }
+}

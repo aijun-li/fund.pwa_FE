@@ -4,7 +4,15 @@
     "max-nesting-depth": 5,
     "selector-max-compound-selectors": 5,
     "color-named": null,
+    "value-keyword-case": null,
+    "function-name-case": null,
     "selector-max-id": 1,
-    "color-hex-length": "long"
+    "color-hex-length": "long",
+    "selector-pseudo-class-no-unknown": [
+      true,
+      {
+        "ignorePseudoClasses": ["global"]
+      }
+    ]
   }
 }
