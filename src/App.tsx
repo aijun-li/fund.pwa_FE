@@ -1,16 +1,21 @@
 import SidePanel from '@/components/SidePanel'
 import { Layout } from 'antd'
 import React from 'react'
+import styles from './App.module.scss'
 
 const { Sider, Content } = Layout
 
 export default function App() {
   return (
     <Layout>
-      <Sider theme="light" width={400}>
+      <Sider
+        className={styles.fundSider}
+        theme="light"
+        width="max(375px, 25vw)"
+      >
         <SidePanel />
       </Sider>
-      <Content></Content>
+      <Content className={styles.fundContent}></Content>
     </Layout>
   )
 }

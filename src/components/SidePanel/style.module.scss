@@ -18,6 +18,8 @@
     .suggestion-list {
       background-color: white;
       border-radius: 0 0 5px 5px;
+      max-height: calc(100vh - 53px);
+      overflow-y: auto;
       padding: 7px;
       position: absolute;
       width: 100%;

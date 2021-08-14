@@ -38,7 +38,7 @@ function FundList() {
               <div>{code}</div>
             </div>
           )}
-          width={230}
+          width={'60%'}
         />
         <Column
           key="net"

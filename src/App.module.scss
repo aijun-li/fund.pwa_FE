@@ -1,0 +1,12 @@
+@media screen and (max-width: 768px) {
+  .fund-sider {
+    flex: 0 0 100vw !important;
+    max-width: 100vw !important;
+    min-width: 100vw !important;
+    width: 100vw !important;
+  }
+
+  .fund-content {
+    display: none;
+  }
+}
