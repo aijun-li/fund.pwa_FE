@@ -28,7 +28,7 @@ function FundList() {
         rowKey="code"
         pagination={false}
         size="small"
-        scroll={{ y: 'calc(100vh - 137px)' }}
+        scroll={{ y: 'calc(100vh - 129px)' }}
       >
         <Column
           key="name"

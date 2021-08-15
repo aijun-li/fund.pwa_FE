@@ -11,10 +11,20 @@
     .ant-table-container {
       border-bottom: 1px solid var(--gray-tiny);
       height: calc(100vh - 80px);
-    }
 
-    .ant-table-body {
-      overflow-y: auto !important;
+      .ant-table-thead {
+        .ant-table-cell {
+          padding: 4px 8px;
+        }
+      }
+
+      .ant-table-body {
+        overflow-y: auto !important;
+
+        .ant-table-cell {
+          padding: 4px 8px;
+        }
+      }
     }
   }
 }
