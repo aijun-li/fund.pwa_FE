@@ -57,7 +57,7 @@ function FundList() {
             <div>
               <div>{net}</div>
               <div className={getRateClass(netRate)}>{netRate}%</div>
-              {getMMDD(netTime) !== netDate && (
+              {netDate !== '00-00' && getMMDD(netTime) !== netDate && (
                 <div className={styles.fundDate}>{getMMDD(netTime)}</div>
               )}
             </div>

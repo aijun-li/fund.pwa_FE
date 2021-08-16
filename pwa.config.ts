@@ -43,7 +43,7 @@ const userOptions: Partial<Options> = {
     runtimeCaching: [
       {
         urlPattern: /^https:\/\/fund.bytecask.com\/api\/.*/i,
-        handler: 'StaleWhileRevalidate',
+        handler: 'NetworkFirst',
         options: {
           cacheName: 'site-api-cache',
           cacheableResponse: {
