@@ -75,10 +75,13 @@ function FundList() {
             Number(a.estRate) - Number(b.estRate)
           }
           showSorterTooltip={false}
-          render={(_, { est, estRate }: WatchItem) => (
+          render={(_, { est, estRate, netTime }: WatchItem) => (
             <div>
               <div>{est}</div>
               <div className={getRateClass(estRate)}>{estRate}%</div>
+              {netDate !== '00-00' && getMMDD(netTime) !== netDate && (
+                <div style={{ height: '18px' }}></div>
+              )}
             </div>
           )}
         />
