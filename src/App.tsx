@@ -1,11 +1,38 @@
 import SidePanel from '@/components/SidePanel'
-import { Layout } from 'antd'
-import React from 'react'
+import { UpCircleTwoTone } from '@ant-design/icons'
+import { Layout, notification } from 'antd'
+import React, { useEffect } from 'react'
+import { useRegisterSW } from 'virtual:pwa-register/react'
 import styles from './App.module.scss'
 
 const { Sider, Content } = Layout
 
 export default function App() {
+  const {
+    needRefresh: [needRefresh, setNeedRefresh],
+    updateServiceWorker
+  } = useRegisterSW({
+    onRegistered() {
+      console.log('SW Registered!')
+    },
+    onRegisterError(error) {
+      console.log('SW Registration Error: ' + error)
+    }
+  })
+
+  useEffect(() => {
+    if (needRefresh) {
+      notification.open({
+        message: '检测到新版本，点击更新',
+        onClick: () => updateServiceWorker(true),
+        onClose: () => setNeedRefresh(false),
+        icon: <UpCircleTwoTone twoToneColor="#52c41a" />,
+        duration: null,
+        className: styles.updatePrompt
+      })
+    }
+  }, [needRefresh, setNeedRefresh, updateServiceWorker])
+
   return (
     <Layout>
       <Sider

@@ -10,3 +10,13 @@
     display: none;
   }
 }
+
+.update-prompt {
+  cursor: pointer;
+
+  :global {
+    .ant-notification-notice-message {
+      margin-bottom: 0;
+    }
+  }
+}

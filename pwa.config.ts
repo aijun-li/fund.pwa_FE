@@ -2,8 +2,8 @@ import { Options } from 'vite-plugin-pwa'
 
 const userOptions: Partial<Options> = {
   strategies: 'generateSW',
-  registerType: 'autoUpdate',
-  injectRegister: 'script',
+  registerType: 'prompt',
+  injectRegister: 'inline',
   includeAssets: ['favicon.svg', 'robots.txt'],
   manifest: {
     name: 'Fund.PWA',
