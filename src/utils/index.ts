@@ -17,7 +17,7 @@ function isTimeBetween(start: string, end: string) {
 }
 
 export function isStockOpen() {
-  return isWeekday() && isTimeBetween('09:25:00', '15:35:00')
+  return isWeekday() && (isTimeBetween('09:25:00', '11:35:00') || isTimeBetween('12:55:00', '15:05:00'))
 }
 
 export function isNetUpdatePeriod() {
