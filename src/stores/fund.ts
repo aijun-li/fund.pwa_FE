@@ -46,24 +46,33 @@ export class FundStore {
     this.#writeToLocal()
   }
 
-  updateWatchItem(info: NetItem | EstItem) {
-    const index = this.watchlist.findIndex(item => item.code === info.code)
-    if (index >= 0) {
-      const fund = this.watchlist[index]
-      this.watchlist[index] = { ...fund, ...info }
-    }
+  updateWatchItem(infos: NetItem[] | EstItem[]) {
+    infos.forEach(info => {
+      const index = this.watchlist.findIndex(item => item.code === info.code)
+      if (index >= 0) {
+        const fund = this.watchlist[index]
+        this.watchlist[index] = { ...fund, ...info }
+      }
+    })
+    this.#writeToLocal()
   }
 
   #readFromLocal() {
     const serialized = localStorage.getItem(LocalKey.Watchlist)
     if (serialized) {
       this.watchlist = serialized.split(',').map(item => {
-        const [code, name, hold] = item.split('|')
+        const [code, name, hold, est, estRate, estTime, net, netRate, netTime] =
+          item.split('|')
         return {
-          ...placeholderItem,
           code,
           name,
-          hold: JSON.parse(hold) as boolean
+          hold: Boolean(hold),
+          est,
+          estRate,
+          estTime: Number(estTime),
+          net,
+          netRate,
+          netTime: Number(netTime)
         }
       })
     }
@@ -71,7 +80,10 @@ export class FundStore {
 
   #writeToLocal() {
     const serialized = this.watchlist
-      .map(({ code, name, hold }) => `${code}|${name}|${hold}`)
+      .map(
+        ({ code, name, hold, est, estRate, estTime, net, netRate, netTime }) =>
+          `${code}|${name}|${hold}|${est}|${estRate}|${estTime}|${net}|${netRate}|${netTime}`
+      )
       .join(',')
     localStorage.setItem(LocalKey.Watchlist, serialized)
   }

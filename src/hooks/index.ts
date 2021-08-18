@@ -1,3 +1,4 @@
+import { LocalKey } from '@/consts'
 import { StoreContext } from '@/contexts'
 import { fetchFundEst, fetchFundNet, fetchFundSuggestions } from '@/services'
 import { Fund } from '@/services/interfaces'
@@ -37,8 +38,12 @@ export function useFundEst(codes: string[]) {
   const {
     FundStore: { updateWatchItem }
   } = useStore()
-  const [estDate, setEstDate] = useState('00-00')
-  const [estTime, setEstTime] = useState('--:--')
+  const [estDate, setEstDate] = useState(
+    () => localStorage.getItem(LocalKey.EstDate) || '00-00'
+  )
+  const [estTime, setEstTime] = useState(
+    () => localStorage.getItem(LocalKey.EstTime) || '--:--'
+  )
 
   const { refetch, isFetching } = useQuery<Fund.EstItem[], Error>(
     ['fund', 'est', codes],
@@ -46,12 +51,14 @@ export function useFundEst(codes: string[]) {
     {
       onSuccess(estList) {
         let latest = 0
+        updateWatchItem(estList)
         estList.forEach(est => {
-          updateWatchItem(est)
           latest = Math.max(latest, est.estTime)
         })
         setEstDate(getMMDD(latest))
         setEstTime(getHHMM(latest))
+        localStorage.setItem(LocalKey.EstDate, getMMDD(latest))
+        localStorage.setItem(LocalKey.EstTime, getHHMM(latest))
       }
     }
   )
@@ -73,7 +80,9 @@ export function useFundNet(codes: string[]) {
   const {
     FundStore: { updateWatchItem }
   } = useStore()
-  const [netDate, setNetDate] = useState('00-00')
+  const [netDate, setNetDate] = useState(
+    () => localStorage.getItem(LocalKey.NetDate) || '00-00'
+  )
   const [isAllLatest, setIsAllLatest] = useState(false)
 
   const { refetch, isFetching } = useQuery<Fund.NetItem[], Error>(
@@ -84,14 +93,14 @@ export function useFundNet(codes: string[]) {
         const today = getMMDD(Date.now())
         let latest = 0
         let allLatest = true
-
+        updateWatchItem(netList)
         netList.forEach(net => {
-          updateWatchItem(net)
           latest = Math.max(latest, net.netTime)
           if (getMMDD(net.netTime) !== today) allLatest = false
         })
         setIsAllLatest(allLatest)
         setNetDate(getMMDD(latest))
+        localStorage.setItem(LocalKey.NetDate, getMMDD(latest))
       }
     }
   )
